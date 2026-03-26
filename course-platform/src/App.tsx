@@ -1,5 +1,19 @@
-import { Button } from 'antd';
+// src/App.tsx
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import InstructorDashboard from './pages/InstructorDashboard';
+import AdminDashboard from './pages/AdminDashboard';
+
 function App() {
-  return <Button type="primary">Ant Design 测试按钮</Button>;
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/instructor/*" element={<InstructorDashboard />} />
+      <Route path="/admin/*" element={<AdminDashboard />} />
+    </Routes>
+  );
 }
+
 export default App;
