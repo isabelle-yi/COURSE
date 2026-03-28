@@ -1,5 +1,5 @@
 
-import React from 'react';
+import { useState }from 'react';
 
 function InstructorDashboard() {
   return <div>讲师端 - 管理你的课程</div>;
