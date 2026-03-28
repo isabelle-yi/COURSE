@@ -11,7 +11,7 @@ import StudentLayout from './layouts/StudentLayout';
 import { useAuthStore } from './store/useAuthStore';
 
 function App() {
-    const { user, isLogin, login, logout } = useAuthStore();
+    const { user, isLogin, login, logout, switchRole } = useAuthStore();
   
   // 临时测试函数
   const testLogin = () => {
@@ -19,7 +19,7 @@ function App() {
       id: 1,
       name: '张三',
       email: 'zhangsan@example.com',
-      role: 'student',
+      role: 'instructor',
       nickname: '小明同学'
     });
     console.log('登录成功', useAuthStore.getState());
@@ -30,6 +30,20 @@ function App() {
     console.log('退出登录', useAuthStore.getState());
   };
 
+  const testSwitchToInstructor = () => {
+    switchRole('instructor');
+    console.log('切换到讲师角色');
+};
+
+  const testSwitchToAdmin = () => {
+    switchRole('admin');
+    console.log('切换到管理员角色');
+};
+
+  const testSwitchToStudent = () => {
+  switchRole('student');
+  console.log('切换到学生角色');
+};
   return (
    <>
       {/* 临时测试面板 - 测试完成后删掉 */}
@@ -44,11 +58,15 @@ function App() {
         zIndex: 9999,
         border: '1px solid #ddd'
       }}>
-        <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>测试面板</div>
+      <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>测试面板</div>
         <button onClick={testLogin} style={{ marginRight: '8px' }}>登录</button>
         <button onClick={testLogout}>退出</button>
-        <div style={{ marginTop: '8px' }}>用户：{user?.name || '未登录'}</div>
-        <div>状态：{isLogin ? '已登录' : '未登录'}</div>
+        <div style={{ marginTop: '8px'}}>用户：{user?.name || '未登录'}</div>
+        <div style={{ marginBottom: '8px'}}>状态：{isLogin ?'已登录' : '未登录'}</div>
+        <button onClick={testSwitchToStudent} style={{ marginRight: '8px' }}>学生</button>
+        <button onClick={testSwitchToInstructor} style={{ marginRight: '8px' }}>讲师</button>
+        <button onClick={testSwitchToAdmin}>管理员</button>
+        <div style={{ marginTop: '8px'}}>当前角色：{user?.role || '无'}</div>  
       </div>
   
     <Routes>

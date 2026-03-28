@@ -8,16 +8,22 @@ interface AuthState{
     login:(user:User) => void;
     logout:() => void;
     updateUser:(userInfo:Partial<User>) => void;
+    switchRole:(newRole:User['role']) => void;
 }
 
-export const useAuthStore=create<AuthState>((set) => ({
-    user:null,
-    isLogin:false,
-    login:(user) => set({ user, isLogin: true }),
-
-    logout:() => set({ user: null, isLogin: false }),
-
-    updateUser:(userInfo) => set((state) => ({
-        user: state.user ? { ...state.user, ...userInfo } : null
-    }))
+export const useAuthStore = create<AuthState>((set) => ({
+  user: null,
+  isLogin: false,
+  
+  login: (user) => set({ user, isLogin: true }),
+  
+  logout: () => set({ user: null, isLogin: false }),
+  
+  updateUser: (userInfo) => set((state) => ({
+    user: state.user ? { ...state.user, ...userInfo } : null
+  })),
+  
+  switchRole: (newRole) => set((state) => ({
+    user: state.user ? { ...state.user, role: newRole } : null
+  }))
 }));
