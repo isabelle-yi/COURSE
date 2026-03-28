@@ -1,0 +1,162 @@
+{
+    
+
+  "users": [
+    {
+      "id": 1,
+      "name": "张三",
+      "email": "zhangsan@example.com",
+      "password": "123456",
+      "role": "student",
+      "avatar": "https://randomuser.me/api/portraits/men/1.jpg",
+      "nickname": "小明同学"
+    },
+    {
+      "id": 2,
+      "name": "李四",
+      "email": "lisi@example.com",
+      "password": "123456",
+      "role": "student",
+      "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
+      "nickname": "小美"
+    },
+    {
+      "id": 3,
+      "name": "王老师",
+      "email": "wang@example.com",
+      "password": "123456",
+      "role": "instructor",
+      "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
+      "nickname": "王教授"
+    },
+    {
+      "id": 4,
+      "name": "赵老师",
+      "email": "zhao@example.com",
+      "password": "123456",
+      "role": "instructor",
+      "avatar": "https://randomuser.me/api/portraits/women/2.jpg",
+      "nickname": "赵博士"
+    },
+    {
+      "id": 5,
+      "name": "管理员",
+      "email": "admin@example.com",
+      "password": "123456",
+      "role": "admin",
+      "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
+      "nickname": "系统管理员"
+    }
+  ],
+
+  "courses": [
+    {
+      "id": 1,
+      "title": "React 从入门到精通",
+      "description": "学习 React 核心概念、Hooks、状态管理等",
+      "instructorId": 3,
+      "instructorName": "王老师",
+      "category": "前端开发",
+      "price": 199,
+      "coverImage": "https://via.placeholder.com/300x200?text=React",
+      "videoUrl": "https://www.example.com/video1.mp4",
+      "status": "approved",
+      "createdAt": "2024-01-15",
+      "watchCount": 1250,
+      "purchaseCount": 89
+    },
+    {
+      "id": 2,
+      "title": "TypeScript 实战指南",
+      "description": "掌握 TypeScript 类型系统、泛型、高级类型",
+      "instructorId": 3,
+      "instructorName": "王老师",
+      "category": "前端开发",
+      "price": 159,
+      "coverImage": "https://via.placeholder.com/300x200?text=TypeScript",
+      "videoUrl": "https://www.example.com/video2.mp4",
+      "status": "approved",
+      "createdAt": "2024-02-10",
+      "watchCount": 890,
+      "purchaseCount": 56
+    },
+    {
+      "id": 3,
+      "title": "Vue3 核心原理",
+      "description": "深入理解 Vue3 响应式原理、组合式 API",
+      "instructorId": 4,
+      "instructorName": "赵老师",
+      "category": "前端开发",
+      "price": 179,
+      "coverImage": "https://via.placeholder.com/300x200?text=Vue3",
+      "videoUrl": "https://www.example.com/video3.mp4",
+      "status": "pending",
+      "createdAt": "2024-03-01",
+      "watchCount": 0,
+      "purchaseCount": 0
+    },
+    {
+      "id": 4,
+      "title": "Node.js 后端开发",
+      "description": "学习 Express、MongoDB、RESTful API 设计",
+      "instructorId": 4,
+      "instructorName": "赵老师",
+      "category": "后端开发",
+      "price": 229,
+      "coverImage": "https://via.placeholder.com/300x200?text=Nodejs",
+      "videoUrl": "https://www.example.com/video4.mp4",
+      "status": "approved",
+      "createdAt": "2024-01-20",
+      "watchCount": 560,
+      "purchaseCount": 34
+    }
+  ],
+
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "courseId": 1,
+      "courseTitle": "React 从入门到精通",
+      "price": 199,
+      "createdAt": "2024-03-15"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "courseId": 2,
+      "courseTitle": "TypeScript 实战指南",
+      "price": 159,
+      "createdAt": "2024-03-16"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "courseId": 1,
+      "courseTitle": "React 从入门到精通",
+      "price": 199,
+      "createdAt": "2024-03-17"
+    }
+  ],
+
+  "comments": [
+    {
+      "id": 1,
+      "userId": 1,
+      "userName": "张三",
+      "courseId": 1,
+      "content": "老师讲得太好了！收获很大！",
+      "rating": 5,
+      "createdAt": "2024-03-16"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "userName": "李四",
+      "courseId": 1,
+      "content": "内容很实用，推荐！",
+      "rating": 4,
+      "createdAt": "2024-03-18"
+    }
+  ]
+}

@@ -8,9 +8,49 @@ import MyLearningPage from './pages/MyLearningPage';
 import InstructorDashboard from './pages/InstructorDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import StudentLayout from './layouts/StudentLayout';
+import { useAuthStore } from './store/useAuthStore';
 
 function App() {
+    const { user, isLogin, login, logout } = useAuthStore();
+  
+  // 临时测试函数
+  const testLogin = () => {
+    login({
+      id: 1,
+      name: '张三',
+      email: 'zhangsan@example.com',
+      role: 'student',
+      nickname: '小明同学'
+    });
+    console.log('登录成功', useAuthStore.getState());
+  };
+  
+  const testLogout = () => {
+    logout();
+    console.log('退出登录', useAuthStore.getState());
+  };
+
   return (
+   <>
+      {/* 临时测试面板 - 测试完成后删掉 */}
+      <div style={{
+        position: 'fixed',
+        top: 10,
+        right: 10,
+        background: 'white',
+        padding: '10px 15px',
+        borderRadius: '8px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+        zIndex: 9999,
+        border: '1px solid #ddd'
+      }}>
+        <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>测试面板</div>
+        <button onClick={testLogin} style={{ marginRight: '8px' }}>登录</button>
+        <button onClick={testLogout}>退出</button>
+        <div style={{ marginTop: '8px' }}>用户：{user?.name || '未登录'}</div>
+        <div>状态：{isLogin ? '已登录' : '未登录'}</div>
+      </div>
+  
     <Routes>
       <Route element={<StudentLayout />}>
         <Route path="/" element={<HomePage />} />
@@ -22,6 +62,7 @@ function App() {
       <Route path="/instructor/*" element={<InstructorDashboard />} />
       <Route path="/admin/*" element={<AdminDashboard />} />
     </Routes>
+    </>
   );
 }
 
