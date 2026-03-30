@@ -22,6 +22,15 @@
     },
     {
       "id": 3,
+      "name": "王五",
+      "email": "wangwu@example.com",
+      "password": "123456",
+      "role": "student",
+      "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
+      "nickname": "小五"
+    },
+    {
+      "id": 4,
       "name": "王老师",
       "email": "wang@example.com",
       "password": "123456",
@@ -30,7 +39,7 @@
       "nickname": "王教授"
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "赵老师",
       "email": "zhao@example.com",
       "password": "123456",
@@ -39,7 +48,7 @@
       "nickname": "赵博士"
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "管理员",
       "email": "admin@example.com",
       "password": "123456",
@@ -131,10 +140,10 @@
     },
     {
       "id": 3,
-      "userId": 2,
-      "courseId": 1,
-      "courseTitle": "React 从入门到精通",
-      "price": 199,
+      "userId": 3,
+      "courseId": 3,
+      "courseTitle": "Vue3 核心原理",
+      "price": 179,
       "createdAt": "2024-03-17"
     }
   ],
@@ -157,6 +166,15 @@
       "content": "内容很实用，推荐！",
       "rating": 4,
       "createdAt": "2024-03-18"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "userName": "王五",
+      "courseId": 3,
+      "content": "讲解清晰，适合初学者！",
+      "rating": 5,
+      "createdAt": "2024-03-19"
     }
   ]
 }

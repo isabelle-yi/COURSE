@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import type { User } from '../types';
 
 interface AuthState{
@@ -11,7 +12,9 @@ interface AuthState{
     switchRole:(newRole:User['role']) => void;
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
+export const useAuthStore = create(
+persist<AuthState>(
+  (set) => ({
   user: null,
   isLogin: false,
   
@@ -26,4 +29,8 @@ export const useAuthStore = create<AuthState>((set) => ({
   switchRole: (newRole) => set((state) => ({
     user: state.user ? { ...state.user, role: newRole } : null
   }))
-}));
+}),
+  {
+    name: 'auth-storage', 
+  }
+));
