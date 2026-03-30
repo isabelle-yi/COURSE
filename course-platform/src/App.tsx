@@ -19,6 +19,7 @@ function App() {
       id: 1,
       name: '张三',
       email: 'zhangsan@example.com',
+      password: '123456',
       role: 'instructor',
       nickname: '小明同学'
     });

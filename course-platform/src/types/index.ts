@@ -3,6 +3,7 @@ export interface User {
   id: number;
   name: string;
   email: string;
+  password: string; 
   role: 'student' | 'instructor' | 'admin';
   avatar?: string;
   nickname?: string;
