@@ -122,6 +122,24 @@ function LoginPage() {
                   <Input.Password placeholder="请输入密码（至少六位）" />
                 </Form.Item>
                 
+                <Form.Item 
+                    label="确认密码" 
+                    name="confirmPassword"
+                    dependencies={['password']}
+                    rules={[
+                    { required: true, message: '请确认密码' },
+                    ({ getFieldValue }) => ({
+                    validator(_, value) {
+                    if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('两次输入的密码不一致'));
+                  },}),
+                  ]}
+                >
+                    <Input.Password placeholder="请再次输入密码" />
+                </Form.Item>
+                
                 <Form.Item
                   label="角色"
                   name="role"
