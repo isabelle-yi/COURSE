@@ -1,6 +1,4 @@
 {
-    
-
   "users": [
     {
       "id": 1,
@@ -55,9 +53,17 @@
       "role": "admin",
       "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
       "nickname": "系统管理员"
+    },
+    {
+      "id": 1774960591023,
+      "name": "新用户",
+      "email": "yixiuran@163.com",
+      "password": "123456",
+      "role": "student",
+      "avatar": "https//randomuser.me/api/portraits/lego/1.jpg",
+      "nickname": "新用户"
     }
   ],
-
   "courses": [
     {
       "id": 1,
@@ -120,7 +126,6 @@
       "purchaseCount": 34
     }
   ],
-
   "orders": [
     {
       "id": 1,
@@ -147,7 +152,6 @@
       "createdAt": "2024-03-17"
     }
   ],
-
   "comments": [
     {
       "id": 1,

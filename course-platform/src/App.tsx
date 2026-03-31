@@ -8,8 +8,7 @@ import MyLearningPage from './pages/MyLearningPage';
 import InstructorDashboard from './pages/InstructorDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import StudentLayout from './layouts/StudentLayout';
-
-
+ import { useAuthStore } from './store/useAuthStore';
 function App() {
     const { user, isLogin, login, logout, switchRole } = useAuthStore();
   
@@ -69,7 +68,7 @@ function App() {
         <button onClick={testSwitchToAdmin}>管理员</button>
         <div style={{ marginTop: '8px'}}>当前角色：{user?.role || '无'}</div>  
       </div>
-  
+
     <Routes>
       <Route element={<StudentLayout />}>
         <Route path="/" element={<HomePage />} />
