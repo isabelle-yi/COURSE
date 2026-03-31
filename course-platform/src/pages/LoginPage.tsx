@@ -19,10 +19,11 @@ function LoginPage() {
   };
 
   const onFinishRegister = async (values: any) => {
-    const { email, password, name, role } = values;
+    const { email, password, name, nickname, role } = values;
+    const finalNickname = nickname || name;
 
     try {
-      const newUser = await registerUser({ email, password, name, role });
+      const newUser = await registerUser({ email, password, name, nickname: finalNickname, role });
       message.success('注册成功，正在自动登录...');
       login(newUser);
       window.location.href ='/';
@@ -139,7 +140,7 @@ function LoginPage() {
                 >
                     <Input.Password placeholder="请再次输入密码" />
                 </Form.Item>
-                
+
                 <Form.Item
                   label="角色"
                   name="role"
