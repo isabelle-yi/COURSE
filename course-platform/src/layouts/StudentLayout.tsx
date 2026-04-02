@@ -40,8 +40,7 @@ const StudentLayout = () => {
       </Header>
 
       <Content style={{ padding: '24px', background: '#f0f2f5' }}>
-        内容区域
-        {}<Outlet />
+        <Outlet />
       </Content>
     </Layout>
   );

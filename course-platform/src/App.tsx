@@ -49,7 +49,7 @@ function App() {
       {/* 临时测试面板 - 测试完成后删掉 */}
       <div style={{
         position: 'fixed',
-        top: 10,
+        top: 80,
         right: 10,
         background: 'white',
         padding: '10px 15px',

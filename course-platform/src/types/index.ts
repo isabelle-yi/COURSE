@@ -13,6 +13,7 @@ export interface Course{
   id: number;
   title:string;
   description:string;
+  instructorName:string;
   instructorId:number;
   category:string;
   price:number;
