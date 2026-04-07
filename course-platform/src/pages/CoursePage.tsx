@@ -23,7 +23,7 @@ const CoursePage = () => {
   return (
     <>
       <div style={{ 
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background:'linear-gradient(90deg, #1890ff,#95de64)',
         padding:'60px 40px',
         borderRadius:'16px',
         marginBottom:'32px',
@@ -73,7 +73,19 @@ const CoursePage = () => {
                   description={
                     <div>
                       <div>讲师: {course.instructorName}</div>
-                      <div style ={{ color: '#f50', marginTop: 8}}>¥{course.price}</div>
+                      <div style={{ 
+                        display: 'flex',           // 使用 flex 布局
+                        justifyContent: 'space-between',  // 两端对齐
+                        alignItems: 'center',      // 垂直居中
+                        marginTop: 8 
+                      }}>
+                    <span style={{ fontSize: 12, color: '#888' }}>
+                      👁️ {course.watchCount || course.purchaseCount || 0} 人学习
+                    </span>
+                    <span style={{ color: '#f50', fontSize: 16, fontWeight: 500 }}>
+                      ¥{course.price}
+                    </span>
+                    </div>
                     </div>
                   }/>
               </Card>

@@ -1,10 +1,15 @@
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Badge, Dropdown, Modal, message, Button } from 'antd';
+import { ShoppingCartOutlined, UserOutlined, LogoutOutlined,BookOutlined} from '@ant-design/icons';
+import { useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 const { Header, Content } = Layout;
 
 const StudentLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [cartCount, setCartCount] = useState(3); // 模拟购物车数量
+  const [logoutModalVisible, setLogoutModalVisible] =useState(false);
+  const[profileModalVisible,setProfileModalVisible]=useState(false)
 
   const menuItems=[
     {key:'/',label:'首页'},
@@ -34,14 +39,62 @@ const StudentLayout = () => {
        />
 
          {/*右侧区域（购物车头像等）*/}
-         <div>
-            <span>购物车|头像</span>
-         </div>
-      </Header>
+        <div style={{ display:'flex', alignItems:'center', gap:'20px'}}>
+          <Badge count={cartCount} style={{marginRight:'16px'}}>
+            <ShoppingCartOutlined style={{fontSize:'20px',cursor:'pointer'}}/>
+          </Badge>
 
-      <Content style={{ padding: '24px', background: '#f0f2f5' }}>
-        <Outlet />
-      </Content>
+          <Dropdown
+           menu={{
+            items:[
+              {
+                key:'profile',
+                icon:<UserOutlined />,
+                label:'个人中心',
+                onClick:() => setProfileModalVisible(true),
+              },
+             {
+              key:'logout',
+              icon:<LogoutOutlined />,
+              label:'退出登录',
+              onClick:()=>setLogoutModalVisible(true),
+             }
+            ]
+           }} >
+            <div style={{display:'flex',alignItems:'center',gap:'8px',cursor:'pointer'}}>
+              <UserOutlined style={{fontSize:'20px'}}/>
+              <span>学生用户</span>
+            </div>
+          </Dropdown>
+           <Modal
+           title="个人中心"
+           open={profileModalVisible}
+           onCancel={()=>setProfileModalVisible(false)}
+           footer={null}
+           >
+          <p>nickname</p>
+          <p>photogh</p>
+          <Button type="primary" onClick={()=>setProfileModalVisible(false)}>关闭</Button>
+           </Modal>
+          <Modal
+          title="退出登录"
+          open={logoutModalVisible}
+          onOk={() => {
+            message.success('已退出登录');
+            setLogoutModalVisible(false);
+            navigate('login');
+          }}
+          onCancel={()=>setLogoutModalVisible(false)}
+          okText="确认"
+          cancelText="取消"
+          >
+          <p>确定要退出登录吗？</p>
+          </Modal>
+        </div>
+        </Header>
+        <Content style={{ padding: '24px', background:'#f0f2f5'}}>
+          <Outlet />
+        </Content>
     </Layout>
   );
 };
