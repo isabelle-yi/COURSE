@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Input, Card, Row, Col, Carousel } from 'antd';
+import { Input, Card, Row, Col, Carousel, Image, Skeleton } from 'antd';
 import { getCourses } from '../api/courses';
 import type { Course } from '../types';
 
@@ -7,7 +7,13 @@ const HomePage = () => {
   const [courses,setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
-    getCourses().then(data=>setCourses(data));
+    setLoading(true);
+    setTimeout(() => {
+    getCourses().then(data => {
+      setCourses(data);
+      setLoading(false);
+    });
+  }, 1000);
   },[])
 
   const recommendedCourses = [...courses]
@@ -18,6 +24,7 @@ const HomePage = () => {
   })
   .slice(0,4);
 
+  const [loading,setLoading] = useState(true)
   return(
     <>
     <div style={{marginBottom:'32px'}}>
@@ -113,15 +120,28 @@ const HomePage = () => {
     <div style={{padding:'0 24px'}}>
        <h2 style={{ marginBottom: '32px',textAlign:'left' }}>推荐课程</h2>
       <Row gutter={[16,16]}>
-         {recommendedCourses.map(course =>(
+        {loading?(
+          [...Array(4)].map((_, i)=>(
+            <Col key={i} xs={24} sm={12} md={8} lg={6}>
+              <Card>
+                <Skeleton active avatar paragraph={{rows:2}}/>
+              </Card>
+            </Col>
+          )
+          )
+        ):(
+         recommendedCourses.map(course =>(
             <Col key={course.id} xs={24} sm={12} md={8} lg={6}>
               <Card
                 hoverable
                 cover={
-                  <img
+                  <Image
                     alt={course.title}
                     src={course.coverImage || 'https://via.placeholder.com/300x200?text=No+Image'}
+                    fallback="https://via.placeholder.com/300x200?text=加载失败"
+                    width="100%"
                     style={{ height:150,objectFit: 'cover' }}
+                    preview={false}
                     />
               }>
                 <Card.Meta
@@ -146,7 +166,8 @@ const HomePage = () => {
                   }/>
               </Card>
             </Col>
-         ))}
+         ))
+        )}
         </Row>
     </div>
     </>

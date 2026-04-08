@@ -1,33 +1,67 @@
-import { Input, Card, Row, Col } from 'antd';
-import { useState, useEffect } from 'react';  
+import { Input, Card, Row, Col, Image,Skeleton } from 'antd';
+import { useState, useEffect, useMemo } from 'react';  
 import { getCourses } from '../api/courses';
 import type { Course } from '../types';
 
 const CoursePage = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [searchKeyword,setSearchKeyword] = useState('');
-  const filteredCourses = courses.filter(course=>{
-    if(!searchKeyword) return true;
-    return(
-      course.title.toLowerCase().includes(searchKeyword.toLowerCase())||
-      course.instructorName.toLowerCase().includes(searchKeyword.toLowerCase())
-    )
-  })
+  const filteredCourses = useMemo(()=>{
+    if(!searchKeyword) return courses;
+      return courses.filter(course =>
+        course.title.toLowerCase().includes(searchKeyword.toLowerCase())||
+        course.instructorName.toLowerCase().includes(searchKeyword.toLowerCase())
+      
+    );
+  },[courses, searchKeyword]);
 
-  const hotKeywords=[...new Set(courses.map(course=>course.category))].slice(0,5);
-
+  const hotKeywords=[...new Set(filteredCourses.map(course=>course.category))].slice(0,5);
+  
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    getCourses().then(data => setCourses(data));
+    setLoading(true);
+    setTimeout(() => {
+    getCourses().then(data => {
+      setCourses(data);
+      setLoading(false);
+    });
+  }, 1000);
+  },[]);
+  
+  const [searchHistory,setSearchHistory] =useState<string[]>([]);
+  useEffect(() => {
+  const history =localStorage.getItem('searchHistory');
+  if (history) {
+    setSearchHistory(JSON.parse(history));
+  }
   },[]);
 
+  const saveToHistory =(keyword:string) => {
+    if(!keyword.trim()) return;
+    const newHistory =[keyword,...searchHistory.filter(h=>h!==keyword)].slice(0,5);
+    setSearchHistory(newHistory);
+    localStorage.setItem('searchHistory',JSON.stringify(newHistory));
+  }
+  
+  const [showHistory,setShowHistory] = useState(false);
+  const[suggestions,setSuggestions] = useState<Course[]>([]);
+
+  const searchSuggestions = useMemo(()=>{
+    if(!searchKeyword.trim()) return [];
+    return courses.filter(course=>
+      course.title.toLowerCase().includes(searchKeyword.toLowerCase())||
+      course.instructorName.toLowerCase().includes(searchKeyword.toLowerCase())
+    ).slice(0,10);
+  },[courses, searchKeyword])
   return (
     <>
       <div style={{ 
         background:'linear-gradient(90deg, #1890ff,#95de64)',
-        padding:'60px 40px',
+        padding:'75px 40px',
         borderRadius:'16px',
         marginBottom:'32px',
-        textAlign:'center'
+        textAlign:'center',
+        position:'relative'
       }}>
         <h1 style={{ color: 'white', marginBottom: '30px' }}>
         发现好课程，提升自己
@@ -37,9 +71,17 @@ const CoursePage = () => {
         allowClear
         size="large"
         onChange={(e) => setSearchKeyword(e.target.value)}
+        onFocus={() => setShowHistory(true)}
+        onBlur={()=>setTimeout(() => setShowHistory(false), 200)}
+        onSearch={(value) => {
+          saveToHistory(value);
+          setShowHistory(false);
+        }}
         style={{ maxWidth: 600, margin: '0 auto' }}
         />
       </div>
+     
+      
 
       <div style={{ marginTop: '20px',marginBottom: '30px'}}>
         <span style={{ marginRight: '8px',color: '#666'}}>热门搜索：</span>
@@ -51,7 +93,18 @@ const CoursePage = () => {
         </a>))}
       </div>
 
-      {filteredCourses.length === 0?(
+      {loading ? (
+        <Row gutter={[16,16]}>
+       {[...Array(8)].map((_,i)=>(
+        <Col key={i} xs={24} sm={12} md={18} lg={6}>
+          <Card>
+            <Skeleton active avatar paragraph={{rows:2}}/>
+          </Card>
+        </Col>
+       ))}
+        </Row>
+      ):
+      filteredCourses.length === 0?(
         <div style={{ textAlign:'center', padding: '50px'}}>
           没有找到相关课程
         </div>
@@ -62,9 +115,11 @@ const CoursePage = () => {
               <Card
                 hoverable
                 cover={
-                  <img
+                  <Image
                     alt={course.title}
                     src={course.coverImage || 'https://via.placeholder.com/300x200?text=No+Image'}
+                    fallback="https://via.placeholder.com/300x200?text=加载失败"
+                    width="100%"
                     style={{ height:150,objectFit: 'cover' }}
                     />
               }>
