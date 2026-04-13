@@ -4,7 +4,7 @@ import { Card, Row, Col, Image, Skeleton, Pagination, Select } from 'antd';
 import { getCourses } from '../api/courses';
 import type { Course } from '../types';
 
-const { Option } =Select;
+
 
 const CategoryPage = () =>{
     const { category } =useParams<{ category: string }>();
@@ -46,10 +46,10 @@ const CategoryPage = () =>{
     );
 
     const decodedCategory = decodeURIComponent(category || '');
-
+    const { Option } =Select;
     return (
-        <div style={{ padding: '24px' }}>
-            <h1 style={{ marginBottom: '8px'}}>{decodedCategory}</h1>
+        <div style={{ padding: '16px 24px' }}>
+            <h1 style={{ marginBottom: '4px'}}>{decodedCategory}</h1>
             <p style={{ color:'#666', marginBottom: '24px'}}>
                 共 {filteredCourses.length} 门课程
             </p>

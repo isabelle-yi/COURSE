@@ -4,7 +4,6 @@ import { getCourses } from '../api/courses';
 import type { Course } from '../types';
 import { useNavigate } from 'react-router-dom';
 
-const navigate = useNavigate();
 const HomePage = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,6 +30,8 @@ const HomePage = () => {
     .sort((a, b) => new Date(b.createdAT).getTime() - new Date(a.createdAT).getTime())
     .slice(0, 4);
 
+  const navigate = useNavigate();
+  
   return (
     <>
       {/* Banner 轮播图 */}

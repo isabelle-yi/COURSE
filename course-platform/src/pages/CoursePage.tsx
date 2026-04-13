@@ -324,7 +324,7 @@ const handleCategoryClick = (cat: string) => {
     </div>
 
 {/* 课程分类 */}
-<div style={{ marginBottom: '24px', padding: '0 24px'}}>
+<div style={{ marginBottom: '32px', padding: '0 24px'}}>
   <div style={{ marginBottom: '6px',color:'#666',fontSize:'14px' }}>
     课程分类
   </div>
@@ -348,15 +348,12 @@ const handleCategoryClick = (cat: string) => {
           whiteSpace: 'nowrap',
           flex: 1,
           textAlign: 'center',
-          borderBottom: '2px solid transparent'
         }}
           onMouseEnter={(e)=>{
             e.currentTarget.style.color='#1890ff'
-            e.currentTarget.style.borderBottomColor = '#1890ff';
           }}
           onMouseLeave={(e)=>{
             e.currentTarget.style.color = '#333';
-            e.currentTarget.style.borderBottomColor = 'transparent';
           }}
       >
         {cat}
