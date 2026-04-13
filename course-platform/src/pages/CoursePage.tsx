@@ -1,8 +1,8 @@
-import { Input, Card, Row, Col, Image,Skeleton } from 'antd';
+import { Input, Card, Row, Col, Image, Skeleton, Select, Pagination } from 'antd';
 import { useState, useEffect, useMemo, useRef } from 'react';  
 import { getCourses } from '../api/courses';
 import type { Course } from '../types';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const CoursePage = () => {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -112,7 +112,34 @@ const CoursePage = () => {
   '考研与考证',
   '兴趣爱好'
 ];
-  
+
+const [sortBy, setSortBy] = useState('default');
+const [currentPage, setCurrentPage] = useState(1);
+const pageSize = 8;
+
+const sortedCourses = useMemo(() => {
+  let sorted = [...filteredCourses];
+  if (sortBy === 'prize_asc') {
+    sorted.sort((a,b) => a.price -b.price);
+  } else if (sortBy === 'prize_desc') {
+    sorted.sort((a,b) => b.price - a.price);
+  } else if (sortBy === 'watchCount') {
+    sorted.sort((a,b) => (b.watchCount || 0) - (a.watchCount || 0));
+  } else if (sortBy === 'rating') {
+    sorted.sort((a,b) => (b.purchaseCount || 0) - (a.purchaseCount || 0));
+  }
+  return sorted;
+},[filteredCourses, sortBy]);
+
+const paginatedCourses =sortedCourses.slice(
+  (currentPage - 1) * pageSize,
+  currentPage * pageSize  
+);
+
+ const navigate = useNavigate();
+const handleCategoryClick = (cat: string) => {
+  navigate(`/category/${encodeURIComponent(cat)}`);
+};
   return (
   <>
     <div style={{ 
@@ -300,26 +327,24 @@ const CoursePage = () => {
     {mainCategories.map(cat => (
       <div
         key={cat}
-        onClick={() => setSearchKeyword(cat)}
+        onClick={() => handleCategoryClick(cat)}
         style={{
           padding: '8px 20px',
-          background: searchKeyword === cat ? '#1890ff' : '#f0f2f5',
-          color: searchKeyword === cat ? 'white' : '#666',
+          background: '#f0f2f5',
+          color: searchKeyword === cat ? '#1890ff' : '#666',
           borderRadius: '30px',
           cursor: 'pointer',
           transition: 'all 0.3s',
           fontWeight: searchKeyword === cat ? 500 : 'normal'
         }}
         onMouseEnter={(e) => {
-          if (searchKeyword !== cat) {
-            e.currentTarget.style.background = '#e6f7ff';
-            e.currentTarget.style.color = '#1890ff';
-          }
+            e.currentTarget.style.color = '#69c0ff';
         }}
         onMouseLeave={(e) => {
           if (searchKeyword !== cat) {
-            e.currentTarget.style.background = '#f0f2f5';
             e.currentTarget.style.color = '#666';
+          } else {
+            e.currentTarget.style.color = '#1890ff';
           }
         }}
       >
@@ -327,6 +352,23 @@ const CoursePage = () => {
       </div>
     ))}
   </div>
+</div>
+
+<div style={{
+   marginBottom: '24px',
+   display: 'flex', 
+   justifyContent: 'space-between',
+   alignItems: 'center',
+   padding: '0 24px'
+  }}>
+  <span>排序方式：</span>
+  <Select value={sortBy} onChange={setSortBy} style={{ width: 180 }}>
+    <Select.Option value="default">默认排序</Select.Option>
+    <Select.Option value="price_asc">按价格升序</Select.Option>
+    <Select.Option value="price_desc">按价格降序</Select.Option>
+    <Select.Option value="watchCount">观看人数最多</Select.Option>
+    <Select.Option value="rating">评分最高</Select.Option>
+  </Select>
 </div>
 
     {/* 课程列表 */}
@@ -346,7 +388,7 @@ const CoursePage = () => {
       </div>
     ) : (
       <Row gutter={[16, 16]}>
-        {filteredCourses.map(course => (
+        {paginatedCourses.map(course => (
           <Col key={course.id} xs={24} sm={12} md={18} lg={6}>
             <Card
               hoverable
@@ -386,6 +428,17 @@ const CoursePage = () => {
         ))}
       </Row>
     )}
+    {!loading && filteredCourses.length > 0 && (
+  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '32px' }}>
+    <Pagination
+      current={currentPage}
+      total={filteredCourses.length}
+      pageSize={pageSize}
+      onChange={setCurrentPage}
+      showSizeChanger={false}
+    />
+  </div>
+)}
   </>
 );
 }
