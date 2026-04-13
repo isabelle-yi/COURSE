@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import { Card, Row, Col, Carousel, Image, Skeleton } from 'antd';
 import { getCourses } from '../api/courses';
 import type { Course } from '../types';
+import { useNavigate } from 'react-router-dom';
 
+const navigate = useNavigate();
 const HomePage = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
@@ -117,6 +119,7 @@ const HomePage = () => {
               <Col key={course.id} xs={24} sm={12} md={8} lg={6}>
                 <Card
                   hoverable
+                  onClick={() => navigate(`/course/${course.id}`)}
                   cover={
                     <Image
                       alt={course.title}

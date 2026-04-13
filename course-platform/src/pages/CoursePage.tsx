@@ -140,6 +140,7 @@ const paginatedCourses =sortedCourses.slice(
 const handleCategoryClick = (cat: string) => {
   navigate(`/category/${encodeURIComponent(cat)}`);
 };
+
   return (
   <>
     <div style={{ 
@@ -321,32 +322,42 @@ const handleCategoryClick = (cat: string) => {
         </div>
       )}
     </div>
-<div style={{ marginBottom: '32px', padding: '0 24px' }}>
-  <h2 style={{ marginBottom: '16px', fontSize: '18px' }}>课程分类</h2>
-  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+
+{/* 课程分类 */}
+<div style={{ marginBottom: '24px', padding: '0 24px'}}>
+  <div style={{ marginBottom: '6px',color:'#666',fontSize:'14px' }}>
+    课程分类
+  </div>
+  <div style={{
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: '12px'
+  }}>
     {mainCategories.map(cat => (
       <div
         key={cat}
         onClick={() => handleCategoryClick(cat)}
         style={{
-          padding: '8px 20px',
-          background: '#f0f2f5',
-          color: searchKeyword === cat ? '#1890ff' : '#666',
-          borderRadius: '30px',
+          padding: '6px 0',
+          background: 'transparent',
+          color: '#333',
+          fontSize: '14px',
           cursor: 'pointer',
-          transition: 'all 0.3s',
-          fontWeight: searchKeyword === cat ? 500 : 'normal'
+          transition: 'all 0.2s',
+          whiteSpace: 'nowrap',
+          flex: 1,
+          textAlign: 'center',
+          borderBottom: '2px solid transparent'
         }}
-        onMouseEnter={(e) => {
-            e.currentTarget.style.color = '#69c0ff';
-        }}
-        onMouseLeave={(e) => {
-          if (searchKeyword !== cat) {
-            e.currentTarget.style.color = '#666';
-          } else {
-            e.currentTarget.style.color = '#1890ff';
-          }
-        }}
+          onMouseEnter={(e)=>{
+            e.currentTarget.style.color='#1890ff'
+            e.currentTarget.style.borderBottomColor = '#1890ff';
+          }}
+          onMouseLeave={(e)=>{
+            e.currentTarget.style.color = '#333';
+            e.currentTarget.style.borderBottomColor = 'transparent';
+          }}
       >
         {cat}
       </div>
@@ -361,14 +372,19 @@ const handleCategoryClick = (cat: string) => {
    alignItems: 'center',
    padding: '0 24px'
   }}>
+  <div style={{ display: 'flex',alignItems: 'center',gap: '12px'}}>
   <span>排序方式：</span>
-  <Select value={sortBy} onChange={setSortBy} style={{ width: 180 }}>
+  <Select value={sortBy} onChange={setSortBy} style={{ width: 140 }}>
     <Select.Option value="default">默认排序</Select.Option>
     <Select.Option value="price_asc">按价格升序</Select.Option>
     <Select.Option value="price_desc">按价格降序</Select.Option>
     <Select.Option value="watchCount">观看人数最多</Select.Option>
     <Select.Option value="rating">评分最高</Select.Option>
   </Select>
+</div>
+<div style={{ color: '#888', fontSize: '14px' }}>
+  共{filteredCourses.length}门课程
+</div>
 </div>
 
     {/* 课程列表 */}
@@ -392,6 +408,7 @@ const handleCategoryClick = (cat: string) => {
           <Col key={course.id} xs={24} sm={12} md={18} lg={6}>
             <Card
               hoverable
+              onClick={() => navigate(`/course/${course.id}`)}
               cover={
                 <Image
                   alt={course.title}

@@ -9,6 +9,8 @@ import InstructorDashboard from './pages/InstructorDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import StudentLayout from './layouts/StudentLayout';
 import CategoryPage from './pages/CategoryPage';
+import CourseDetailPage from './pages/CourseDetailPage';
+import NotFoundPage from './pages/NotFoundPage';
 function App() {
   return (
    <>
@@ -16,13 +18,15 @@ function App() {
       <Route element={<StudentLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/category/:category" element={<CategoryPage />} />
+        <Route path="/course/:id" element={<CourseDetailPage />}/>
         <Route path="/my-learning" element={<MyLearningPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/category/:category" element={<CategoryPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/instructor/*" element={<InstructorDashboard />} />
       <Route path="/admin/*" element={<AdminDashboard />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
     </>
   );

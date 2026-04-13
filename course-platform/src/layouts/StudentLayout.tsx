@@ -2,6 +2,8 @@ import { Layout, Menu, Badge, Dropdown, Modal, message, Button } from 'antd';
 import { ShoppingCartOutlined, UserOutlined, LogoutOutlined,BookOutlined} from '@ant-design/icons';
 import { useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import AppBreadcrumb from '../components/layout/AppBreadcrumb';
+
 const { Header, Content } = Layout;
 
 const StudentLayout = () => {
@@ -93,6 +95,7 @@ const StudentLayout = () => {
         </div>
         </Header>
         <Content style={{ padding: '24px', background:'#f0f2f5'}}>
+          <AppBreadcrumb />
           <Outlet />
         </Content>
     </Layout>
