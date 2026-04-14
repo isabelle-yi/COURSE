@@ -9,6 +9,17 @@ export interface User {
   nickname?: string;
 }
 
+export interface Section{
+  title: string;
+  videoUrl: string;
+  isFree: boolean;
+}
+
+export interface Chapter{
+  chapterTitle: string;
+  sections: Section[];
+}
+
 export interface Course{
   id: number;
   title:string;
@@ -22,6 +33,8 @@ export interface Course{
   createdAT: string;
   watchCount?: number;
   purchaseCount?: number;
+  chapters?: Chapter[];
+  comments?: Comment[];
 }
 
 export interface Order {
