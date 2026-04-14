@@ -17,35 +17,31 @@ const AppBreadcrumb = () => {
 
     if (pathnames.length === 0) return null;
     
-    return (
-        <Breadcrumb style={{ marginBottom: '16px', padding: '0 24px'}}>
-            <Breadcrumb.Item>
-            <Link to="/">首页</Link>
-            </Breadcrumb.Item>
-       
-        {pathnames.map((name, index) => {
-            const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
-            const isLast = index === pathnames.length - 1;
-            const displayName = nameMap[name] || decodeURIComponent(name);
+   const breadcrumbItems: {title: string | JSX.Element }[]= [
+    { title:<Link to="/">首页</Link>},
+   ];
 
-            if(name === 'course' && !isLast) return null;
-            if(name === 'course' && isLast){
-                return (
-                    <Breadcrumb.Item key={routeTo}>
-                        课程详情
-                    </Breadcrumb.Item>
-                );
-            }
+   for (let i=0; i<pathnames.length;i++){
+    const name = pathnames[i];
+    const isLast = i === pathnames.length -1;
+    const routeTo = `/${pathnames.slice(0, i+1).join('/')}`;
+    const displayName = nameMap[name] || decodeURIComponent(name);
 
-            return (
-                <Breadcrumb.Item key={routeTo}>
-                    {isLast ? displayName : <Link to={routeTo}>{displayName}</Link>}
-                </Breadcrumb.Item>
-            )
-        })}
-         </Breadcrumb>
-    );
+    if(name === 'course' && !isLast) continue;
 
+    breadcrumbItems.push({
+        title: (name === 'course' && isLast)
+        ? '课程详情'
+        :(isLast? displayName:<Link to={routeTo}>{displayName}</Link>),
+     });
+   }
+    
+    return(
+    <Breadcrumb
+       style={{ marginBottom: '16px', padding: '0 24px'}}
+       items={breadcrumbItems}
+    />
+   );
 };
 
 export default AppBreadcrumb;

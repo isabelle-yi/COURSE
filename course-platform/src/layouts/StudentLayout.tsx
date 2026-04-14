@@ -3,14 +3,15 @@ import { ShoppingCartOutlined, UserOutlined, LogoutOutlined,BookOutlined} from '
 import { useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import AppBreadcrumb from '../components/layout/AppBreadcrumb';
+import { useCartStore } from '../store/useCartStore';
 
 const { Header, Content } = Layout;
 
 const StudentLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [cartCount, setCartCount] = useState(3); // 模拟购物车数量
   const [logoutModalVisible, setLogoutModalVisible] =useState(false);
+  const cartItemCount = useCartStore((state) => state.getItemCount()) || 0;
   const[profileModalVisible,setProfileModalVisible]=useState(false)
 
   const menuItems=[
@@ -42,8 +43,11 @@ const StudentLayout = () => {
 
          {/*右侧区域（购物车头像等）*/}
         <div style={{ display:'flex', alignItems:'center', gap:'20px'}}>
-          <Badge count={cartCount} style={{marginRight:'16px'}}>
-            <ShoppingCartOutlined style={{fontSize:'20px',cursor:'pointer'}}/>
+          <Badge count={cartItemCount} style={{marginRight:'16px'}}>
+            <ShoppingCartOutlined 
+              style={{fontSize:'20px',cursor:'pointer'}}
+              onClick={() => navigate('/cart')}  
+            />
           </Badge>
 
           <Dropdown

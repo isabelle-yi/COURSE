@@ -8,6 +8,7 @@ import { message } from 'antd';
 import { useAuthStore } from '../store/useAuthStore';
 import { getOrdersByUser } from '../api/orders';
 import { getCommentsByCourse } from '../api/comments';
+import { useCartStore } from '../store/useCartStore';
 
 
 const CourseDetailPage = () => {
@@ -35,6 +36,7 @@ const CourseDetailPage = () => {
 
     const { user } =useAuthStore();
     const [isPurchased, setIsPurchased] = useState(false);
+    const addToCart = useCartStore((state) => state.addToCart);
 
     useEffect(() => {
         if (user&& id){
@@ -185,7 +187,35 @@ const CourseDetailPage = () => {
                 {/* 按钮组 */}
                 <div style={{ display: 'flex', gap: '12px' }}>
                    {!isPurchased ? (
-                    <Button type="primary" size="large">加入购物车</Button>
+                    <Button 
+                       type="primary"
+                       size="large"
+                       onClick={()=>{
+                        if(!course || !course.id){
+                            message.error('课程信息错误，无法添加');
+                            return;
+                        }
+
+                        if(isPurchased){
+                            message.warning('您已购买该课程，无需添加');
+                            return;
+                        }
+                        
+                        try {
+                           const success =addToCart(course);
+                           if (success){
+                            message.success('已添加到购物车');
+                           } else{
+                            message.info('课程已在购物车中');
+                           }
+                        } catch (error) {
+                            message.error('网络错误，添加失败，请稍候重试');
+                        }
+
+                       }}
+                    >
+                        加入购物车
+                    </Button>
                    ):(
                     <Button type="primary" size="large">已购买</Button>
                    )}

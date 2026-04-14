@@ -11,6 +11,7 @@ import StudentLayout from './layouts/StudentLayout';
 import CategoryPage from './pages/CategoryPage';
 import CourseDetailPage from './pages/CourseDetailPage';
 import NotFoundPage from './pages/NotFoundPage';
+import CartPage from './pages/CartPage';
 function App() {
   return (
    <>
@@ -22,6 +23,7 @@ function App() {
         <Route path="/course/:id" element={<CourseDetailPage />}/>
         <Route path="/my-learning" element={<MyLearningPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path='/cart' element={<CartPage/>}/>
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/instructor/*" element={<InstructorDashboard />} />
