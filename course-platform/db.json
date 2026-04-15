@@ -71,7 +71,7 @@
       "description": "学习 React 核心概念、Hooks、状态管理等",
       "instructorId": 3,
       "instructorName": "王老师",
-      "category": "前端开发",
+      "category": "编程与开发",
       "price": 199,
       "coverImage": "https://picsum.photos/id/1/300/200",
       "videoUrl": "https://www.example.com/video1.mp4",
@@ -83,17 +83,41 @@
         {
           "chapterTitle": "第一章 React 基础",
           "sections": [
-            { "title": "1.1 React 介绍", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 JSX 语法", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 组件与 Props", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 React 介绍",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 JSX 语法",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 组件与 Props",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 React Hooks",
           "sections": [
-            { "title": "2.1 useState 详解", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 useEffect 详解", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 自定义 Hook", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 useState 详解",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 useEffect 详解",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 自定义 Hook",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -104,7 +128,7 @@
       "description": "掌握 TypeScript 类型系统、泛型、高级类型",
       "instructorId": 3,
       "instructorName": "王老师",
-      "category": "前端开发",
+      "category": "编程与开发",
       "price": 159,
       "coverImage": "https://picsum.photos/id/2/300/200",
       "videoUrl": "https://www.example.com/video2.mp4",
@@ -116,17 +140,41 @@
         {
           "chapterTitle": "第一章 TypeScript 基础",
           "sections": [
-            { "title": "1.1 类型注解", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 接口与类型别名", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 泛型入门", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 类型注解",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 接口与类型别名",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 泛型入门",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 高级类型",
           "sections": [
-            { "title": "2.1 联合类型与交叉类型", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 类型守卫", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 声明合并", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 联合类型与交叉类型",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 类型守卫",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 声明合并",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -137,7 +185,7 @@
       "description": "深入理解 Vue3 响应式原理、组合式 API",
       "instructorId": 4,
       "instructorName": "赵老师",
-      "category": "前端开发",
+      "category": "编程与开发",
       "price": 179,
       "coverImage": "https://picsum.photos/id/3/300/200",
       "videoUrl": "https://www.example.com/video3.mp4",
@@ -149,17 +197,41 @@
         {
           "chapterTitle": "第一章 Vue3 基础",
           "sections": [
-            { "title": "1.1 组合式 API 入门", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 ref 与 reactive", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 生命周期钩子", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 组合式 API 入门",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 ref 与 reactive",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 生命周期钩子",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 响应式原理",
           "sections": [
-            { "title": "2.1 Proxy 代理", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 依赖收集", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 触发更新", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 Proxy 代理",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 依赖收集",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 触发更新",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -170,7 +242,7 @@
       "description": "学习 Express、MongoDB、RESTful API 设计",
       "instructorId": 4,
       "instructorName": "赵老师",
-      "category": "后端开发",
+      "category": "编程与开发",
       "price": 229,
       "coverImage": "https://picsum.photos/id/4/300/200",
       "videoUrl": "https://www.example.com/video4.mp4",
@@ -182,17 +254,41 @@
         {
           "chapterTitle": "第一章 Node.js 入门",
           "sections": [
-            { "title": "1.1 Node.js 安装与运行", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 模块系统", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 文件系统操作", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 Node.js 安装与运行",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 模块系统",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 文件系统操作",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
-          "chapterTitle":"第二章 Express 框架",
+          "chapterTitle": "第二章 Express 框架",
           "sections": [
-            { "title": "2.1 Express 入门", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 路由与中间件", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 RESTful API 设计", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 Express 入门",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 路由与中间件",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 RESTful API 设计",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -215,17 +311,41 @@
         {
           "chapterTitle": "第一章 Python 基础",
           "sections": [
-            { "title": "1.1 环境搭建", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 NumPy 基础", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 Pandas 入门", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 环境搭建",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 NumPy 基础",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 Pandas 入门",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 数据可视化",
           "sections": [
-            { "title": "2.1 Matplotlib 基础", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 图表美化", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 实战案例", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 Matplotlib 基础",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 图表美化",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 实战案例",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -248,17 +368,41 @@
         {
           "chapterTitle": "第一章 机器学习基础",
           "sections": [
-            { "title": "1.1 什么是机器学习", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 监督学习", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 无监督学习", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 什么是机器学习",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 监督学习",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 无监督学习",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 神经网络",
           "sections": [
-            { "title": "2.1 感知机", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 反向传播", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 深度学习入门", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 感知机",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 反向传播",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 深度学习入门",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -281,17 +425,41 @@
         {
           "chapterTitle": "第一章 Figma 基础",
           "sections": [
-            { "title": "1.1 Figma 界面介绍", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 设计基础操作", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 组件与变体", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 Figma 界面介绍",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 设计基础操作",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 组件与变体",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 设计系统",
           "sections": [
-            { "title": "2.1 颜色系统", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 字体系统", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 组件库搭建", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 颜色系统",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 字体系统",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 组件库搭建",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -314,17 +482,41 @@
         {
           "chapterTitle": "第一章 Photoshop",
           "sections": [
-            { "title": "1.1 PS 界面与工具", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 图层与蒙版", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 调色与滤镜", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 PS 界面与工具",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 图层与蒙版",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 调色与滤镜",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 Illustrator",
           "sections": [
-            { "title": "2.1 AI 基础操作", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 矢量图形设计", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 排版设计", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 AI 基础操作",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 矢量图形设计",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 排版设计",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -347,17 +539,41 @@
         {
           "chapterTitle": "第一章 发音基础",
           "sections": [
-            { "title": "1.1 音标入门", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 连读与弱读", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 语音语调", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 音标入门",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 连读与弱读",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 语音语调",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 日常对话",
           "sections": [
-            { "title": "2.1 问候与介绍", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 点餐与购物", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 旅行英语", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 问候与介绍",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 点餐与购物",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 旅行英语",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -380,17 +596,41 @@
         {
           "chapterTitle": "第一章 五十音图",
           "sections": [
-            { "title": "1.1 平假名", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 片假名", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 浊音与拗音", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 平假名",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 片假名",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 浊音与拗音",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 基础语法",
           "sections": [
-            { "title": "2.1 です・ます体", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 助词入门", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 动词变形", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 です・ます体",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 助词入门",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 动词变形",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -413,17 +653,41 @@
         {
           "chapterTitle": "第一章 向上管理",
           "sections": [
-            { "title": "1.1 汇报技巧", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 请示方法", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 争取资源", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 汇报技巧",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 请示方法",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 争取资源",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 跨部门协作",
           "sections": [
-            { "title": "2.1 沟通原则", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 冲突处理", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 建立信任", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 沟通原则",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 冲突处理",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 建立信任",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -446,17 +710,41 @@
         {
           "chapterTitle": "第一章 敏捷开发",
           "sections": [
-            { "title": "1.1 敏捷宣言", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 Scrum 框架", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 用户故事", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 敏捷宣言",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 Scrum 框架",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 用户故事",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 项目规划",
           "sections": [
-            { "title": "2.1 需求分析", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 进度管理", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 风险管理", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 需求分析",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 进度管理",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 风险管理",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -479,17 +767,41 @@
         {
           "chapterTitle": "第一章 高等数学",
           "sections": [
-            { "title": "1.1 极限与连续", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 导数与微分", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 积分学", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 极限与连续",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 导数与微分",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 积分学",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 线性代数",
           "sections": [
-            { "title": "2.1 行列式", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 矩阵", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 向量空间", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 行列式",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 矩阵",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 向量空间",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -512,17 +824,41 @@
         {
           "chapterTitle": "第一章 言语理解",
           "sections": [
-            { "title": "1.1 片段阅读", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 逻辑填空", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 语句表达", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 片段阅读",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 逻辑填空",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 语句表达",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 判断推理",
           "sections": [
-            { "title": "2.1 图形推理", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 定义判断", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 逻辑判断", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 图形推理",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 定义判断",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 逻辑判断",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -545,17 +881,41 @@
         {
           "chapterTitle": "第一章 摄影基础",
           "sections": [
-            { "title": "1.1 光圈与快门", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 ISO 与白平衡", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 对焦与测光", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 光圈与快门",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 ISO 与白平衡",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 对焦与测光",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 构图技巧",
           "sections": [
-            { "title": "2.1 三分法", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 引导线", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 对称与平衡", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 三分法",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 引导线",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 对称与平衡",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -578,17 +938,41 @@
         {
           "chapterTitle": "第一章 吉他基础",
           "sections": [
-            { "title": "1.1 吉他结构与调音", "videoUrl": "https://www.example.com/video1-1.mp4", "isFree": true },
-            { "title": "1.2 右手拨弦", "videoUrl": "https://www.example.com/video1-2.mp4", "isFree": false },
-            { "title": "1.3 左手按弦", "videoUrl": "https://www.example.com/video1-3.mp4", "isFree": false }
+            {
+              "title": "1.1 吉他结构与调音",
+              "videoUrl": "https://www.example.com/video1-1.mp4",
+              "isFree": true
+            },
+            {
+              "title": "1.2 右手拨弦",
+              "videoUrl": "https://www.example.com/video1-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "1.3 左手按弦",
+              "videoUrl": "https://www.example.com/video1-3.mp4",
+              "isFree": false
+            }
           ]
         },
         {
           "chapterTitle": "第二章 和弦与弹唱",
           "sections": [
-            { "title": "2.1 C 大调和弦", "videoUrl": "https://www.example.com/video2-1.mp4", "isFree": false },
-            { "title": "2.2 G 大调和弦", "videoUrl": "https://www.example.com/video2-2.mp4", "isFree": false },
-            { "title": "2.3 弹唱配合", "videoUrl": "https://www.example.com/video2-3.mp4", "isFree": false }
+            {
+              "title": "2.1 C 大调和弦",
+              "videoUrl": "https://www.example.com/video2-1.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.2 G 大调和弦",
+              "videoUrl": "https://www.example.com/video2-2.mp4",
+              "isFree": false
+            },
+            {
+              "title": "2.3 弹唱配合",
+              "videoUrl": "https://www.example.com/video2-3.mp4",
+              "isFree": false
+            }
           ]
         }
       ]
@@ -618,6 +1002,46 @@
       "courseTitle": "Vue3 核心原理",
       "price": 179,
       "createdAt": "2024-03-17"
+    },
+    {
+      "userId": 1,
+      "courseId": 2,
+      "courseTitle": "TypeScript 实战指南",
+      "price": 358,
+      "createdAt": "2026-04-15T10:17:00.299Z",
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "courseId": 2,
+      "courseTitle": "TypeScript 实战指南",
+      "price": 159,
+      "createdAt": "2026-04-15T11:36:03.779Z",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "courseId": 1,
+      "courseTitle": "React 从入门到精通",
+      "price": 199,
+      "createdAt": "2026-04-15T11:44:26.637Z",
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "courseId": 2,
+      "courseTitle": "TypeScript 实战指南",
+      "price": 159,
+      "createdAt": "2026-04-15T14:07:51.055Z",
+      "id": 7
+    },
+    {
+      "userId": 1774960591023,
+      "courseId": 2,
+      "courseTitle": "TypeScript 实战指南",
+      "price": 159,
+      "createdAt": "2026-04-15T14:22:58.802Z",
+      "id": 8
     }
   ],
   "comments": [

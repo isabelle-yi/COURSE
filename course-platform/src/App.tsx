@@ -12,6 +12,9 @@ import CategoryPage from './pages/CategoryPage';
 import CourseDetailPage from './pages/CourseDetailPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage'
+
+
 function App() {
   return (
    <>
@@ -23,7 +26,8 @@ function App() {
         <Route path="/course/:id" element={<CourseDetailPage />}/>
         <Route path="/my-learning" element={<MyLearningPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path='/cart' element={<CartPage/>}/>
+        <Route path='/cart' element={<CartPage />}/>
+        <Route path="/checkout" element={<CheckoutPage />}/>
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/instructor/*" element={<InstructorDashboard />} />

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCourseById } from '../api/courses';
 import type { Course, Comment } from '../types';
@@ -37,6 +37,10 @@ const CourseDetailPage = () => {
     const { user } =useAuthStore();
     const [isPurchased, setIsPurchased] = useState(false);
     const addToCart = useCartStore((state) => state.addToCart);
+    const [searchParams] = useSearchParams();
+    const isPurchasedFromUrl = searchParams.get('purchased') === 'true';
+    const finalIsPurchased = isPurchased || isPurchasedFromUrl;
+
 
     useEffect(() => {
         if (user&& id){
@@ -77,7 +81,7 @@ const CourseDetailPage = () => {
                dataSource={chapter.sections}
                renderItem={(section, sectionIndex) => {
                 const isFree = section.isFree || false;
-                const canWatch = isPurchased || isFree;
+                const canWatch = finalIsPurchased || isFree;
 
                 return (
                     <List.Item
@@ -98,7 +102,7 @@ const CourseDetailPage = () => {
                            <span>{section.title}</span>
                        </div>
                        {!canWatch && <LockOutlined style={{ color: '#ccc'}}/>}
-                       {isFree && !isPurchased && (
+                       {isFree && !finalIsPurchased && (
                         <Tag color="green" style={{ margin: 8 }}>试听</Tag>
                        )}
                     </List.Item>
@@ -186,7 +190,7 @@ const CourseDetailPage = () => {
                 
                 {/* 按钮组 */}
                 <div style={{ display: 'flex', gap: '12px' }}>
-                   {!isPurchased ? (
+                   {!finalIsPurchased? (
                     <Button 
                        type="primary"
                        size="large"
