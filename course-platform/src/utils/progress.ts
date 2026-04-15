@@ -9,7 +9,7 @@ export const setCourseProgress = (courseId: number, progress: number) => {
     localStorage.setItem(key ,JSON.stringify(progress));
 };
 
-export const getLastWatchChapter = (courseId: number): { chapterIndex: number,sectionIndex: number} | null => {
+export const getLastWatchedChapter = (courseId: number): { chapterIndex: number,sectionIndex: number} | null => {
     const key = `course_last_watched_${courseId}`;
     const saved = localStorage.getItem(key);
     return saved ? JSON.parse(saved) : null;

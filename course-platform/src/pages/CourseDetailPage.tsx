@@ -87,7 +87,12 @@ const CourseDetailPage = () => {
                     <List.Item
                         style={{ 
                            cursor: canWatch ? 'pointer' : 'not-allowed',
-                           opacity: canWatch ? 1:0.6
+                           opacity: canWatch ? 1:0.6,
+                           display: 'flex',
+                           justifyContent: 'space-between',
+                           alignItems: 'center',
+                           width: '100%',
+                           padding: '8px 12px',
                         }}
                         onClick={() => {
                             if (canWatch) {
@@ -101,10 +106,13 @@ const CourseDetailPage = () => {
                            <PlayCircleOutlined style={{ color: canWatch ? '#1890ff':'#ccc'}}/>
                            <span>{section.title}</span>
                        </div>
+
+                       <div style={{ minWidth: 50, textAlign: 'center' }}>
                        {!canWatch && <LockOutlined style={{ color: '#ccc'}}/>}
                        {isFree && !finalIsPurchased && (
-                        <Tag color="green" style={{ margin: 8 }}>试听</Tag>
+                        <Tag color="green">试听</Tag>
                        )}
+                       </div>
                     </List.Item>
                 );
                }}

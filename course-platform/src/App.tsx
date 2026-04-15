@@ -13,7 +13,7 @@ import CourseDetailPage from './pages/CourseDetailPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage'
-
+import CourseLearnPage from './pages/CourseLearnPage';
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path='/cart' element={<CartPage />}/>
         <Route path="/checkout" element={<CheckoutPage />}/>
+        <Route path="/course/:id/learn" element={<CourseLearnPage/>} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/instructor/*" element={<InstructorDashboard />} />
