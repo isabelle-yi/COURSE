@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import AppBreadcrumb from '../components/layout/AppBreadcrumb';
 import { useCartStore } from '../store/useCartStore';
+import { Avatar } from 'antd';
+import { useAuthStore } from '../store/useAuthStore';
 
 const { Header, Content } = Layout;
 
@@ -12,7 +14,8 @@ const StudentLayout = () => {
   const location = useLocation();
   const [logoutModalVisible, setLogoutModalVisible] =useState(false);
   const cartItemCount = useCartStore((state) => state.getItemCount()) || 0;
-  const[profileModalVisible,setProfileModalVisible]=useState(false)
+  const[profileModalVisible,setProfileModalVisible]=useState(false);
+  const { user } = useAuthStore();
 
   const menuItems=[
     {key:'/',label:'首页'},
@@ -67,10 +70,10 @@ const StudentLayout = () => {
              }
             ]
            }} >
-            <div style={{display:'flex',alignItems:'center',gap:'8px',cursor:'pointer'}}>
-              <UserOutlined style={{fontSize:'20px'}}/>
-              <span>学生用户</span>
-            </div>
+          <div style={{display:'flex',alignItems:'center',gap:'8px',cursor:'pointer'}}>
+            <Avatar size={32} src={user?.avatar} icon={<UserOutlined />} />
+            <span>{user?.nickname || user?.name || '学生用户'}</span>
+          </div>
           </Dropdown>
           <Modal
           title="退出登录"

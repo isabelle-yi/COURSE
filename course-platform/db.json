@@ -55,13 +55,8 @@
       "nickname": "系统管理员"
     },
     {
-      "id": 1774960591023,
-      "name": "新用户",
-      "email": "yixiuran@163.com",
-      "password": "123456",
-      "role": "student",
-      "avatar": "https://randomuser.me/api/portraits/lego/1.jpg",
-      "nickname": "新用户"
+      "nickname": "isabelle",
+      "id": 1774960591023
     }
   ],
   "courses": [
@@ -1042,6 +1037,14 @@
       "price": 159,
       "createdAt": "2026-04-15T14:22:58.802Z",
       "id": 8
+    },
+    {
+      "userId": 1774960591023,
+      "courseId": 3,
+      "courseTitle": "Vue3 核心原理",
+      "price": 179,
+      "createdAt": "2026-04-16T14:48:32.339Z",
+      "id": 9
     }
   ],
   "comments": [
@@ -1125,6 +1128,15 @@
       "content": "期待更多实战内容",
       "rating": 4,
       "createdAt": "2024-03-25"
+    },
+    {
+      "id": 10,
+      "userId": 1774960591023,
+      "userName": "isabelle",
+      "courseId": 3,
+      "content": "讲的很好，有很多收获",
+      "rating": 5,
+      "createdAt": "2024-04-15"
     }
   ]
 }
