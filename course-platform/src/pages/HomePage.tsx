@@ -3,6 +3,7 @@ import { Card, Row, Col, Carousel, Image, Skeleton } from 'antd';
 import { getCourses } from '../api/courses';
 import type { Course } from '../types';
 import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store/useAuthStore';
 
 const HomePage = () => {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -31,7 +32,20 @@ const HomePage = () => {
     .slice(0, 4);
 
   const navigate = useNavigate();
+  const [purchasedCourseIds, setPurchasedCourseIds] = useState<number[]>([]);
+  const { user } = useAuthStore();
   
+  useEffect(() => {
+  if (user) {
+    import('../api/orders').then(({ getOrdersByUser }) => {
+      getOrdersByUser(user.id).then(orders => {
+        const ids = orders.map(order => order.courseId);
+        setPurchasedCourseIds(ids);
+      });
+    });
+  }
+}, [user]);
+
   return (
     <>
       {/* Banner 轮播图 */}
@@ -133,7 +147,16 @@ const HomePage = () => {
                   }
                 >
                   <Card.Meta
-                    title={course.title}
+                     title={
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                        <span>{course.title}</span>
+                        {purchasedCourseIds.includes(course.id) && (
+                          <span style={{ background: '#52c41a', color: 'white', padding: '2px 8px', borderRadius: '4px', fontSize: 12 }}>
+                            已购买
+                          </span>
+                        )}
+                      </div>
+                    }
                     description={
                       <div>
                         <div>讲师：{course.instructorName}</div>
@@ -184,7 +207,16 @@ const HomePage = () => {
                   }
                 >
                   <Card.Meta
-                    title={course.title}
+                     title={
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                        <span>{course.title}</span>
+                        {purchasedCourseIds.includes(course.id) && (
+                          <span style={{ background: '#52c41a', color: 'white', padding: '2px 8px', borderRadius: '4px', fontSize: 12 }}>
+                            已购买
+                          </span>
+                        )}
+                      </div>
+                    }
                     description={
                       <div>
                         <div>讲师：{course.instructorName}</div>

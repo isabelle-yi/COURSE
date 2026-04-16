@@ -57,7 +57,7 @@ const StudentLayout = () => {
                 key:'profile',
                 icon:<UserOutlined />,
                 label:'个人中心',
-                onClick:() => setProfileModalVisible(true),
+                onClick:() => navigate('/profile'),
               },
              {
               key:'logout',
@@ -72,16 +72,6 @@ const StudentLayout = () => {
               <span>学生用户</span>
             </div>
           </Dropdown>
-           <Modal
-           title="个人中心"
-           open={profileModalVisible}
-           onCancel={()=>setProfileModalVisible(false)}
-           footer={null}
-           >
-          <p>nickname</p>
-          <p>photogh</p>
-          <Button type="primary" onClick={()=>setProfileModalVisible(false)}>关闭</Button>
-           </Modal>
           <Modal
           title="退出登录"
           open={logoutModalVisible}

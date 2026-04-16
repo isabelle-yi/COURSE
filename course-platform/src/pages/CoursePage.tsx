@@ -3,6 +3,8 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { getCourses } from '../api/courses';
 import type { Course } from '../types';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store/useAuthStore';
+import { getOrdersByUser } from '../api/orders';
 
 const CoursePage = () => {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -136,7 +138,21 @@ const paginatedCourses =sortedCourses.slice(
   currentPage * pageSize  
 );
 
- const navigate = useNavigate();
+const navigate = useNavigate();
+const [purchasedCourseIds, setPurchasedCourseIds] = useState<number[]>([]);
+const { user } = useAuthStore();
+
+useEffect(() => {
+  if (user) {
+    import('../api/orders').then(({ getOrdersByUser }) => {
+      getOrdersByUser(user.id).then(orders => {
+        const ids =orders.map(order => order.courseId);
+        setPurchasedCourseIds(ids);
+      });
+    });
+  }
+},[user]);
+
 const handleCategoryClick = (cat: string) => {
   navigate(`/category/${encodeURIComponent(cat)}`);
 };
@@ -417,7 +433,16 @@ const handleCategoryClick = (cat: string) => {
               }
             >
               <Card.Meta
-                title={course.title}
+                 title={
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                      <span>{course.title}</span>
+                      {purchasedCourseIds.includes(course.id) && (
+                        <span style={{ background: '#52c41a', color: 'white', padding: '2px 8px', borderRadius: '4px', fontSize: 12 }}>
+                          已购买
+                        </span>
+                      )}
+                    </div>
+                 }
                 description={
                   <div>
                     <div>讲师: {course.instructorName}</div>

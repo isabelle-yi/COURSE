@@ -14,6 +14,7 @@ interface PurchasedCourse extends Course {
 
 const MyLearningPage = () => {
   const navigate = useNavigate();
+  const [purchasedCourseIds, setPurchasedCourseIds] = useState<number[]>([]);
   const { user } =useAuthStore();
   const [courses, setCourses] = useState<PurchasedCourse[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,9 @@ const MyLearningPage = () => {
       setLoading(true);
       try {
         const orders = await getOrdersByUser(user.id);
+        const ids = orders.map(order => order.courseId);
+        setPurchasedCourseIds(ids);
+        
         const coursePromises = orders.map(async (order) => {
           const course = await getCourseById(order.courseId);
           return {
@@ -99,8 +103,17 @@ const MyLearningPage = () => {
                   />
                 }
               >
-                <Card.Meta
-                  title={course.title}
+                <Card.Meta 
+                  title={
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                      <span>{course.title}</span>
+                      {purchasedCourseIds.includes(course.id) && (
+                        <span style={{ background: '#52c41a', color: 'white', padding: '2px 8px', borderRadius: '4px', fontSize: 12 }}>
+                          已购买
+                        </span>
+                      )}
+                    </div>
+                  }
                   description={
                     <div>
                       <div>讲师：{course.instructorName}</div>
