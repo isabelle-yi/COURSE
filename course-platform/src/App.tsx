@@ -14,6 +14,9 @@ import NotFoundPage from './pages/NotFoundPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage'
 import CourseLearnPage from './pages/CourseLearnPage';
+import InstructorLayout from './layouts/InstructorLayout';
+import InstructorCourses from './pages/InstructorCourses';
+import InstructorData from './pages/InstructorData';
 
 function App() {
   return (
@@ -31,7 +34,10 @@ function App() {
         <Route path="/course/:id/learn" element={<CourseLearnPage/>} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/instructor/*" element={<InstructorDashboard />} />
+     <Route path="/instructor" element={<InstructorLayout />}>
+      <Route path="courses" element={<InstructorCourses />} />
+      <Route path="data" element={<InstructorData />} />
+    </Route>
       <Route path="/admin/*" element={<AdminDashboard />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
