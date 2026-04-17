@@ -17,6 +17,7 @@ import CourseLearnPage from './pages/CourseLearnPage';
 import InstructorLayout from './layouts/InstructorLayout';
 import InstructorCourses from './pages/InstructorCourses';
 import InstructorData from './pages/InstructorData';
+import InstructorUploadCourse from './pages/InstructorUploadCourse';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
      <Route path="/instructor" element={<InstructorLayout />}>
       <Route path="courses" element={<InstructorCourses />} />
       <Route path="data" element={<InstructorData />} />
+      <Route path="upload" element={<InstructorUploadCourse />} />
     </Route>
       <Route path="/admin/*" element={<AdminDashboard />} />
       <Route path="*" element={<NotFoundPage />} />

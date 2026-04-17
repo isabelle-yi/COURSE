@@ -29,8 +29,9 @@ export interface Course{
   category:string;
   price:number;
   coverImage?:string;
+  videoUrl?: string;
   status: 'pending' | 'approved' | 'rejected';
-  createdAT: string;
+  createdAt: string;
   watchCount?: number;
   purchaseCount?: number;
   chapters?: Chapter[];
