@@ -17,3 +17,9 @@ export const createOrder = async (order: Omit<Order, 'id'>) => {
   if (!res.ok) throw new Error('创建订单失败');
   return res.json();
 };
+
+export const getAllOrders = async (): Promise<Order[]> => {
+  const res = await fetch('http://localhost:3000/orders');
+  if (!res.ok) throw new Error('获取订单失败');
+  return res.json();
+};

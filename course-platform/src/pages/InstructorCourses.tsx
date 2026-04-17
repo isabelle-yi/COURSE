@@ -321,7 +321,7 @@ return (
         { pattern: /^\d+$/, message: '请输入数字' }
       ]}
     >
-      <Input type="number" placeholder="例如：199" addonAfter="元" />
+      <Input type="number" placeholder="例如：199" suffix="元" />
     </Form.Item>
 
     <Form.Item

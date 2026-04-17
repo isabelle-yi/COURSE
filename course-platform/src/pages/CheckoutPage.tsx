@@ -6,6 +6,7 @@ import { useOrderStore } from '../store/useOrderStore';
 import { createOrder as createOrderAPI } from '../api/orders';
 import type { OrderItem } from '../store/useOrderStore';
 import { useAuthStore } from '../store/useAuthStore';
+import { getCourseById, updateCourse } from '../api/courses';
 
 const { Title, Text } = Typography;
 
@@ -21,51 +22,66 @@ const CheckoutPage = () => {
   const totalPrice = getSelectedTotalPrice();
   const selectedCount = getSelectedCount();
 
-  const handleSubmitOrder = async () => {
-    if (selectedCount === 0) {
-      message.warning('请选择要结算的商品');
-      return;
-    }
+ const handleSubmitOrder = async () => {
+  if (selectedCount === 0) {
+    message.warning('请选择要结算的商品');
+    return;
+  }
 
-    setLoading(true);
+  setLoading(true);
 
-    const orderItems: OrderItem[] = selectedItems.map(item => ({
-      courseId: item.courseId,
-      title: item.title,
-      price: item.price,
-      coverImage: item.coverImage,
-    }));
+  const orderItems: OrderItem[] = selectedItems.map(item => ({
+    courseId: item.courseId,
+    title: item.title,
+    price: item.price,
+    coverImage: item.coverImage,
+  }));
 
-    // 创建订单
-    createOrder(orderItems, totalPrice);
+  // 创建订单
+  createOrder(orderItems, totalPrice);
 
-    // 同步到服务器
-    try {
-      await createOrderAPI({
-        userId: user?.id || 0,
-        courseId: selectedItems[0]?.courseId || 0,
-        courseTitle: selectedItems[0]?.title || '',
-        price: totalPrice,
-        createdAt: new Date().toISOString(),
-      });
-    } catch (error) {
-      console.error('同步订单失败:', error);
-    }
-
-    // 清空购物车中已购买的商品
-    selectedItems.forEach(item => {
-      removeFromCart(item.courseId);
+  // 同步到服务器
+  try {
+    await createOrderAPI({
+      userId: user?.id || 0,
+      courseId: selectedItems[0]?.courseId || 0,
+      courseTitle: selectedItems[0]?.title || '',
+      price: totalPrice,
+      createdAt: new Date().toISOString(),
     });
+  } catch (error) {
+    console.error('同步订单失败:', error);
+  }
 
-    setLoading(false);
-    
-    // 购买成功，跳转到我的学习
-    message.success('购买成功！');
-    setTimeout(() => {
-      navigate('/my-learning');
-    }, 500);
+  // 清空购物车中已购买的商品
+  selectedItems.forEach(item => {
+    removeFromCart(item.courseId);
+  });
+
+  // 更新课程的购买次数
+  const updateCoursePurchaseCount = async (courseId: number) => {
+    try {
+      const course = await getCourseById(courseId);
+      const newPurchaseCount = (course.purchaseCount || 0) + 1;
+      await updateCourse(courseId, { purchaseCount: newPurchaseCount });
+    } catch (error) {
+      console.error('更新课程购买次数失败:', error);
+    }
   };
 
+  // 更新所有购买课程的购买次数
+  for (const item of selectedItems) {
+    await updateCoursePurchaseCount(item.courseId);
+  }
+
+  setLoading(false);
+  
+  // 购买成功，跳转到我的学习
+  message.success('购买成功！');
+  setTimeout(() => {
+    navigate('/my-learning');
+  }, 500);
+};
   if (selectedCount === 0) {
     return (
       <div style={{ padding: '50px', textAlign: 'center' }}>

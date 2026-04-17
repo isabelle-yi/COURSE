@@ -1,6 +1,6 @@
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getCourseById } from '../api/courses';
+import { getCourseById, updateCourse } from '../api/courses';
 import type { Course, Comment } from '../types';
 import { Card, Button, Tag, Collapse, List, Avatar, Rate, Input, Pagination, message } from 'antd';
 import { LockOutlined, PlayCircleOutlined } from '@ant-design/icons';
@@ -45,8 +45,9 @@ const CourseDetailPage = () => {
   const [searchParams] = useSearchParams();
   const isPurchasedFromUrl = searchParams.get('purchased') === 'true';
   const finalIsPurchased = isPurchased || isPurchasedFromUrl;
+  const isInstructor = user?.role === 'instructor';
+  const isOwnCourse = isInstructor && user?.id === course?.instructorId;
 
-  // 检查是否已购买
   useEffect(() => {
     if (user && id) {
       getOrdersByUser(user.id).then(orders => {
@@ -55,6 +56,19 @@ const CourseDetailPage = () => {
       });
     }
   }, [user, id]);
+ 
+  // 观看次数累加（只有购买过的课程才增加，自己的课程不增加）
+  useEffect(() => {
+  if (id && course && finalIsPurchased && !isOwnCourse) {
+    const hasViewed = sessionStorage.getItem(`viewed_course_${id}`);
+    if (!hasViewed) {
+      const newWatchCount = (course.watchCount || 0) + 1;
+      updateCourse(Number(id), { watchCount: newWatchCount });
+      setCourse({ ...course, watchCount: newWatchCount });
+      sessionStorage.setItem(`viewed_course_${id}`, 'true');
+    }
+  }
+}, [id, course, finalIsPurchased, isOwnCourse]);
 
   if (loading) {
     return <div style={{ padding: '50px', textAlign: 'center' }}>加载中...</div>;
@@ -119,9 +133,8 @@ const CourseDetailPage = () => {
           size="small"
           dataSource={chapter.sections}
           renderItem={(section, sectionIndex) => {
-            const isFree = section.isFree || false;
-            const canWatch = finalIsPurchased || isFree;
-
+          const isFree = section.isFree || false;
+          const canWatch = finalIsPurchased || isFree || isOwnCourse;
             return (
               <List.Item
                 style={{
@@ -147,7 +160,7 @@ const CourseDetailPage = () => {
                 </div>
                 <div style={{ minWidth: 50, textAlign: 'center' }}>
                   {!canWatch && <LockOutlined style={{ color: '#ccc' }} />}
-                  {isFree && !finalIsPurchased && <Tag color="green">试听</Tag>}
+                  {isFree && !finalIsPurchased && !isOwnCourse && <Tag color="green">试听</Tag>}
                 </div>
               </List.Item>
             );
@@ -287,7 +300,9 @@ const CourseDetailPage = () => {
         </div>
 
         <div style={{ display: 'flex', gap: '12px' }}>
-          {!finalIsPurchased ? (
+          {isOwnCourse ? (
+            <Button type="primary" size="large">我的课程</Button>
+           ) :!finalIsPurchased ? (
             <Button
               type="primary"
               size="large"

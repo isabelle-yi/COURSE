@@ -18,13 +18,13 @@ const CategoryPage = () =>{
     useEffect(() => {
         setLoading(true);
         getCourses().then(data => {
-            const categoryCourses =data.filter(c => c.category === category);
+            const approvedCourses = data.filter(c => c.status === 'approved');
+            const categoryCourses =approvedCourses.filter(c => c.category === category);
             setCourses(categoryCourses);
             setFilteredCourses(categoryCourses);
             setLoading(false);
         });
     }, [category]);
-
     useEffect(() => {
         let sorted = [...courses];
         if (sortBy === 'price_asc'){

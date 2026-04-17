@@ -49,8 +49,21 @@
       "nickname": "系统管理员"
     },
     {
-      "nickname": "isabelle",
-      "id": 1774960591023
+      "id": 7,
+      "name": "Isabelle",
+      "email": "yixiuran@163.com",
+      "password": "123456",
+      "role": "student",
+      "nickname": "isabelle"
+    },
+    {
+      "id": 8,
+      "name": "王美",
+      "email": "wangmei@163.com",
+      "password": "123456",
+      "role": "student",
+      "nickname": "小美",
+      "avatar": "https://randomuser.me/api/portraits/lego/1.jpg"
     }
   ],
   "courses": [
@@ -1039,6 +1052,22 @@
       "price": 179,
       "createdAt": "2026-04-16T14:48:32.339Z",
       "id": 9
+    },
+    {
+      "userId": 7,
+      "courseId": 5,
+      "courseTitle": "Python数据分析实战",
+      "price": 249,
+      "createdAt": "2026-04-17T16:03:58.317Z",
+      "id": 10
+    },
+    {
+      "userId": 4,
+      "courseId": 4,
+      "courseTitle": "Node.js 后端开发",
+      "price": 229,
+      "createdAt": "2026-04-17T16:12:53.370Z",
+      "id": 11
     }
   ],
   "comments": [
@@ -1125,12 +1154,21 @@
     },
     {
       "id": 10,
-      "userId": 1774960591023,
+      "userId": 7,
       "userName": "isabelle",
       "courseId": 3,
       "content": "讲的很好，有很多收获",
       "rating": 5,
-      "createdAt": "2024-04-15"
+      "createdAt": "2026-04-15"
+    },
+    {
+      "id": 11,
+      "userId": 7,
+      "userName": "isabelle",
+      "courseId": 5,
+      "content": "非常喜欢",
+      "rating": 5,
+      "createdAt": "2026-04-17"
     }
   ]
 }

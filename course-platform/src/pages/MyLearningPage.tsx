@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Row, Col, Image, Skeleton, Progress, Button } from 'antd';
 import { getOrdersByUser } from '../api/orders';
-import { getCourseById } from '../api/courses';
+import { getCourseById, getCoursesByInstructor } from '../api/courses';
 import { useAuthStore } from '../store/useAuthStore';
 import { getCourseProgress } from '../utils/progress';
 import type { Course } from '../types';
@@ -22,30 +22,42 @@ const MyLearningPage = () => {
   useEffect(() => {
     if (!user) return;
 
-    const fetchPurchasedCourses = async () => {
-      setLoading(true);
-      try {
-        const orders = await getOrdersByUser(user.id);
-        const ids = orders.map(order => order.courseId);
-        setPurchasedCourseIds(ids);
-        
-        const coursePromises = orders.map(async (order) => {
-          const course = await getCourseById(order.courseId);
-          return {
-            ...course,
-            orderId: order.id,
-            purchasedAt: order.createdAt,
-          };
-        });
-
-        const purchasedCourses =await Promise.all(coursePromises);
-        setCourses(purchasedCourses);
-      } catch (error) {
-        console.error('获取已购课程失败',error);
-      } finally {
-        setLoading(false);
-      }
-    };
+// 在 fetchPurchasedCourses 函数中
+const fetchPurchasedCourses = async () => {
+  setLoading(true);
+  try {
+    // 1. 获取购买的课程
+    const orders = await getOrdersByUser(user.id);
+    const purchasedPromises = orders.map(async (order) => {
+      const course = await getCourseById(order.courseId);
+      return { ...course, orderId: order.id, purchasedAt: order.createdAt };
+    });
+    const purchasedCourses = await Promise.all(purchasedPromises);
+    
+    // 2. 如果是讲师，获取自己创建的课程
+    let instructorCourses: PurchasedCourse[] = [];
+    if (user.role === 'instructor') {
+      const ownCourses = await getCoursesByInstructor(user.id);
+      instructorCourses = ownCourses.map(course => ({
+        ...course,
+        orderId: 0,
+        purchasedAt: course.createdAt,
+      }));
+    }
+    
+    // 3. 合并去重（避免重复）
+    const allCourses = [...purchasedCourses, ...instructorCourses];
+    const uniqueCourses = allCourses.filter((course, index, self) => 
+      index === self.findIndex(c => c.id === course.id)
+    );
+    
+    setCourses(uniqueCourses);
+  } catch (error) {
+    console.error('获取课程失败', error);
+  } finally {
+    setLoading(false);
+  }
+};
 
     fetchPurchasedCourses();
   },[user]);

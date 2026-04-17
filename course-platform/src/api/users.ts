@@ -45,14 +45,15 @@ export const registerUser = async (userData: {
   const exists = users.find(u => u.email === userData.email);
   if (exists) throw new Error('该邮箱已被注册');
   
+  const maxId = Math.max(...users.map(u => u.id));
+  
   const newUser = {
-    id: Date.now(),
+    id: maxId + 1,
     name: userData.name,
     email: userData.email,
     password: userData.password,
     role: userData.role,
     nickname: userData.nickname,
-    avatar: 'https://randomuser.me/api/portraits/lego/1.jpg'
   };
   
   const res = await fetch(`${BASE_URL}/users`, {

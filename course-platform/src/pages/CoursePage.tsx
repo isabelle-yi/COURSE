@@ -24,7 +24,8 @@ const CoursePage = () => {
   useEffect(() => {
     setLoading(true);
     getCourses().then(data => {
-      setCourses(data);
+      const approvedCourses = data.filter(course => course.status === 'approved');
+      setCourses(approvedCourses);
       setLoading(false);
     });
   },[]);
@@ -433,16 +434,20 @@ const handleCategoryClick = (cat: string) => {
               }
             >
               <Card.Meta
-                 title={
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                      <span>{course.title}</span>
-                      {purchasedCourseIds.includes(course.id) && (
-                        <span style={{ background: '#52c41a', color: 'white', padding: '2px 8px', borderRadius: '4px', fontSize: 12 }}>
-                          已购买
-                        </span>
-                      )}
-                    </div>
-                 }
+                title={
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                    <span>{course.title}</span>
+                   {user?.role === 'instructor' && user?.id === course.instructorId ? (
+                   <span style={{ background: '#1890ff', color: 'white', padding: '2px 8px', borderRadius: '4px', fontSize: 12 }}>
+                     我的课程
+                   </span>
+                  ) : purchasedCourseIds.includes(course.id) && (
+                  <span style={{ background: '#52c41a', color: 'white', padding: '2px 8px', borderRadius: '4px', fontSize: 12 }}>
+                   已购买
+                  </span>
+                 )}
+                </div>
+               }
                 description={
                   <div>
                     <div>讲师: {course.instructorName}</div>
