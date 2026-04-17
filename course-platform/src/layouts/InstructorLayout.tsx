@@ -1,6 +1,6 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Button } from 'antd';
 import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom';
-import { BookOutlined, BarChartOutlined } from '@ant-design/icons';
+import { BookOutlined, BarChartOutlined, HomeOutlined } from '@ant-design/icons';
 
 const { Header, Content, Sider } = Layout;
 
@@ -38,23 +38,40 @@ const InstructorLayout = () => {
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Header style={{ background: '#fff', padding: '0 24px', display: 'flex', alignItems: 'center' }}>
+      <Header style={{ 
+        background: '#fff', 
+        padding: '0 24px', 
+        display: 'flex', 
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
         <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#1890ff' }}>
           讲师中心
         </div>
+        <Button 
+          type="link" 
+          icon={<HomeOutlined />} 
+          onClick={() => navigate('/')}
+          style={{ color: '#1890ff' }}
+        >
+          返回首页
+        </Button>
       </Header>
+      
       <Layout>
-        <Sider width={220} style={{ background: '#fff', borderRight: '1px solid #f0f0f0' }}>
-          <Menu
-            mode="inline"
-            selectedKeys={[selectedKey]}
-            items={menuItems}
-            onClick={({ key }) => navigate(key)}
-            style={{ height: '100%', borderRight: 0 }}
-          />
+        <Sider width={220} style={{ background: '#f5f5f5', borderRight: '1px solid #e8e8e8' }}>
+        <Menu
+          mode="inline"
+          selectedKeys={[selectedKey]}
+          items={menuItems}
+          onClick={({ key }) => navigate(key)}
+          style={{ height: '100%', borderRight: 0, background: '#f5f5f5', marginTop: '8px' }}
+          theme="light"
+        />
         </Sider>
-        <Layout style={{ padding: '0 24px 24px 24px' }}>
-          <Breadcrumb items={getBreadcrumbItems()} style={{ margin: '16px 0' }} />
+        
+        <Layout style={{ padding: '0 24px' }}>
+          <Breadcrumb items={getBreadcrumbItems()} style={{ margin: '8px 0' }} />
           <Content style={{ background: '#f0f2f5' }}>
             <Outlet />
           </Content>

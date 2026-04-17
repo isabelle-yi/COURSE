@@ -6,7 +6,6 @@
       "email": "zhangsan@example.com",
       "password": "123456",
       "role": "student",
-      "avatar": "https://randomuser.me/api/portraits/men/1.jpg",
       "nickname": "小明同学"
     },
     {
@@ -15,7 +14,6 @@
       "email": "lisi@example.com",
       "password": "123456",
       "role": "student",
-      "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
       "nickname": "小美"
     },
     {
@@ -24,7 +22,6 @@
       "email": "wangwu@example.com",
       "password": "123456",
       "role": "student",
-      "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
       "nickname": "小五"
     },
     {
@@ -33,7 +30,6 @@
       "email": "wang@example.com",
       "password": "123456",
       "role": "instructor",
-      "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
       "nickname": "王教授"
     },
     {
@@ -42,7 +38,6 @@
       "email": "zhao@example.com",
       "password": "123456",
       "role": "instructor",
-      "avatar": "https://randomuser.me/api/portraits/women/2.jpg",
       "nickname": "赵博士"
     },
     {
@@ -51,7 +46,6 @@
       "email": "admin@example.com",
       "password": "123456",
       "role": "admin",
-      "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
       "nickname": "系统管理员"
     },
     {

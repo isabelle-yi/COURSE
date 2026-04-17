@@ -77,7 +77,7 @@ const ProfilePage = () => {
     <div style={{ maxWidth: 600, margin: '0 auto', padding: '24px' }}>
       <Card title="个人中心">
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
-          <Avatar size={100} src={user?.avatar} icon={<UserOutlined />} />
+          <Avatar size={100} icon={<UserOutlined />} />
         </div>
 
         <Form form={form} layout="vertical" onFinish={handleSubmit}>

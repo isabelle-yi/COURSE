@@ -62,6 +62,12 @@ const StudentLayout = () => {
                 label:'个人中心',
                 onClick:() => navigate('/profile'),
               },
+              ...(user?.role === 'instructor' || user?.role === 'admin' ? [{
+              key: 'instructor',
+              icon: <BookOutlined />,
+              label: user?.role === 'instructor' ? '讲师中心' : '管理后台',
+              onClick: () => navigate(user?.role === 'instructor' ? '/instructor/courses' : '/admin'),
+             }] : []),
              {
               key:'logout',
               icon:<LogoutOutlined />,
@@ -71,7 +77,7 @@ const StudentLayout = () => {
             ]
            }} >
           <div style={{display:'flex',alignItems:'center',gap:'8px',cursor:'pointer'}}>
-            <Avatar size={32} src={user?.avatar} icon={<UserOutlined />} />
+            <Avatar size={32} icon={<UserOutlined />} />
             <span>{user?.nickname || user?.name || '学生用户'}</span>
           </div>
           </Dropdown>
